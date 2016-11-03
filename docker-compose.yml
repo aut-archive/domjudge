@@ -1,0 +1,34 @@
+version: '2'
+services:
+
+    # HTTP Domserver
+    domserver: 
+        image: daavar/domserver
+        env_file: conf/domserver.conf
+        volumes:
+           - ./data/etc:/opt/domjudge/judgehost/etc
+        links:
+           - mysql
+        network_mode: bridge
+        restart: always
+
+    # Mysql database
+    mysql:
+       image: mariadb
+       env_file: conf/mysql.conf
+       volumes:
+          - ./data/mysql:/var/lib/mysql 
+       network_mode: bridge
+       restart: always
+    
+    # Phpmyadmin
+    phpmyadmin:
+       image:  phpmyadmin/phpmyadmin
+       env_file: conf/phpmyadmin.conf
+       environment:
+         -  UPLOAD_SIZE=1G
+         -  MYSQL_HOST=mysql
+       links:
+         - mysql
+       network_mode: bridge
+       restart: always
