@@ -5,8 +5,8 @@ services:
     domserver: 
         image: daavar/domserver
         env_file: conf/domserver.conf
-        volumes:
-           - ./data/etc:/opt/domjudge/judgehost/etc
+#        volumes:
+#           - ./data/etc:/opt/domjudge/etc
         links:
            - mysql
         network_mode: bridge
@@ -27,7 +27,7 @@ services:
        env_file: conf/phpmyadmin.conf
        environment:
          -  UPLOAD_SIZE=1G
-         -  MYSQL_HOST=mysql
+         -  PMA_HOST=mysql
        links:
          - mysql
        network_mode: bridge

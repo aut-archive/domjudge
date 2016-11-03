@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! $# -eq 0 ] ; then
+    $@ 
+    exit
+fi
+
+echo "dummy:$DB_HOST:$DB_NAME:$DB_USER:$DB_PASSWORD" >  /opt/domjudge/etc/dbpasswords.secret
+
+echo "default  $API_URL  $API_USER  $API_PASSWORD" > /opt/domjudge/etc/restapi.secrets
+
+## TODO
+chmod 777 /opt/domjudge/etc -R
+
+supervisord

@@ -34,9 +34,16 @@ RUN cd /tmp/domjudge && \
     ln -sfv /opt/domjudge/judgehost/bin/* /usr/local/bin
 
 RUN mkdir -p /opt/domjudge/etc && \ 
-    cp -nv /opt/domjudge/domserver/etc/* /opt/domserver/etc/ && \
+    cp -nv /opt/domjudge/domserver/etc/* /opt/domjudge/etc/ && \
     rm -r /opt/domjudge/domserver/etc && \
-    ln -vs /opt/domjudge/etc /opt/domjudge/domserver/etc 
+    ln -vs /opt/domjudge/etc /opt/domjudge/domserver/etc  && \
     cp -nv /opt/domjudge/judgehost/etc/* /opt/domjudge/etc/ && \
     rm -r /opt/domjudge/judgehost/etc && \
     ln -vs /opt/domjudge/etc /opt/domjudge/judgehost/etc 
+VOLUME /opt/domjudge/etc
+
+RUN apt-get install mariadb-client -fy
+
+COPY bin /bin
+
+ENTRYPOINT ["entrypoint"]
