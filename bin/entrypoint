@@ -12,4 +12,6 @@ echo "default  $API_URL  $API_USER  $API_PASSWORD" > /opt/domjudge/etc/restapi.s
 ## TODO
 chmod 777 /opt/domjudge/etc -R
 
+[ -x /entrypoint ] && /entrypoint
+
 supervisord

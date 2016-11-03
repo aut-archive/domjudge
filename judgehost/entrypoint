@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Disable chroot"
+cd /opt/domjudge/etc
+sed -i "s/'USE_CHROOT', true/'USE_CHROOT', false/g" judgehost-config.php

@@ -1,14 +1,22 @@
 version: '2'
+
 services:
 
-    # HTTP Domserver
+    # Jury UI Service
     domserver: 
         image: daavar/domserver
         env_file: conf/domserver.conf
-#        volumes:
-#           - ./data/etc:/opt/domjudge/etc
         links:
            - mysql
+        network_mode: bridge
+        restart: always
+
+    # judgehosts service
+    judgehost: 
+        image: daavar/judgehost
+        env_file: conf/domserver.conf
+        links:
+           - domserver
         network_mode: bridge
         restart: always
 

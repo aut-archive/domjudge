@@ -40,7 +40,6 @@ RUN mkdir -p /opt/domjudge/etc && \
     cp -nv /opt/domjudge/judgehost/etc/* /opt/domjudge/etc/ && \
     rm -r /opt/domjudge/judgehost/etc && \
     ln -vs /opt/domjudge/etc /opt/domjudge/judgehost/etc 
-VOLUME /opt/domjudge/etc
 
 RUN apt-get install mariadb-client -fy
 
