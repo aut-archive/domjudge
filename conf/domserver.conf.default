@@ -1,8 +1,3 @@
-DB_HOST=mysql
-DB_USER=
-DB_NAME=
-DB_PASSWORD=
-
 API_URL=http://domserver/api/
 API_USER=domjudge
 API_PASSWORD=
