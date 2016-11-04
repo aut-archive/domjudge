@@ -5,27 +5,34 @@ services:
     # Jury UI Service
     domserver: 
         image: daavar/domserver
-        env_file: 
-            - conf/mysql.conf
-            - conf/domserver.conf
         links:
            - mysql
+        environment:
+           - VIRTUAL_HOST=
+           - MYSQL_HOST=mysql
+           - MYSQL_DATABASE=
+           - MYSQL_USER=
+           - MYSQL_PASSWORD=
         network_mode: bridge
         restart: always
 
     # Judgehosts service
     judgehost: 
         image: daavar/judgehost
-        env_file: conf/domserver.conf
         links:
            - domserver
+        environment:
+           - API_URL=http://domserver/api/
+           - API_USER=judgehost
+           - API_PASSWORD=
         network_mode: bridge
         restart: always
 
     # Mysql database
     mysql:
        image: mariadb
-       env_file: conf/mysql.conf
+       environment:
+          - MYSQL_ROOT_PASSWORD=
        volumes:
           - ./data/mysql:/var/lib/mysql 
        network_mode: bridge
@@ -34,10 +41,11 @@ services:
     # Phpmyadmin
     phpmyadmin:
        image:  phpmyadmin/phpmyadmin
-       env_file: conf/phpmyadmin.conf
        environment:
-         -  UPLOAD_SIZE=1G
-         -  PMA_HOST=mysql
+         - ABSOLUTE_URI=http://pma
+         - VIRTUAL_HOST=pma
+         - UPLOAD_SIZE=1G
+         - PMA_HOST=mysql
        links:
          - mysql
        network_mode: bridge

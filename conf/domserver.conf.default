@@ -1,7 +1,0 @@
-API_URL=http://domserver/api/
-API_USER=domjudge
-API_PASSWORD=
-
-MYSQL_HOST=mysql
-
-VIRTUAL_HOST=
