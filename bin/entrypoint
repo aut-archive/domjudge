@@ -7,11 +7,8 @@ fi
 
 echo "dummy:$DB_HOST:$DB_NAME:$DB_USER:$DB_PASSWORD" >  /opt/domjudge/etc/dbpasswords.secret
 
-echo "default  $API_URL  $API_USER  $API_PASSWORD" > /opt/domjudge/etc/restapi.secrets
+echo "default  $API_URL  $API_USER  $API_PASSWORD" > /opt/domjudge/etc/restapi.secret
 
-## TODO
 chmod 777 /opt/domjudge/etc -R
 
 [ -x /entrypoint ] && /entrypoint
-
-supervisord

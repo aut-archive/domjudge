@@ -43,6 +43,8 @@ RUN mkdir -p /opt/domjudge/etc && \
 
 RUN apt-get install mariadb-client -fy
 
+RUN apt-get install vim -fy
+
 COPY bin /bin
 
 ENTRYPOINT ["entrypoint"]

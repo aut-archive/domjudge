@@ -10,6 +10,8 @@ COPY conf/supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80
 
+COPY entrypoint /
+
 # Nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx-default /etc/nginx/conf.d/default.conf
