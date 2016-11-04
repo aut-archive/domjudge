@@ -13,6 +13,8 @@ services:
            - MYSQL_DATABASE=
            - MYSQL_USER=
            - MYSQL_PASSWORD=
+        ports:
+         - "8080:80"
         network_mode: bridge
         restart: always
 
@@ -21,6 +23,10 @@ services:
         image: daavar/judgehost
         links:
            - domserver
+        ipc: host
+        privileged: true
+        volumes:
+           - "/dev:/dev"
         environment:
            - API_URL=http://domserver/api/
            - API_USER=judgehost
@@ -48,5 +54,7 @@ services:
          - PMA_HOST=mysql
        links:
          - mysql
+       ports:
+         - "8081:80"
        network_mode: bridge
        restart: always

@@ -18,13 +18,15 @@ RUN apt-get install -fy \
         sudo procps gcc g++ build-essential ghc fp-compiler
 
 RUN cd /opt && \
-    curl -#L http://mirrors.linuxeye.com/jdk/jdk-7u80-linux-x64.tar.gz | tar -xzf- && \
+    curl -#L http://mirrors.linuxeye.com/jdk/jdk-8u102-linux-x64.tar.gz | tar -xzf- && \
     mv /opt/jdk* /opt/jdk && \
     ln -fvs /opt/jdk/bin/* /usr/local/bin/
 
 RUN cd /tmp && \
     curl -#L https://www.domjudge.org/releases/domjudge-5.1.2.tar.gz | tar -xzf- && \
     mv domjudge* domjudge
+
+RUN apt-get install -fy libcgroup-dev
 
 RUN cd /tmp/domjudge && \
     ./configure --disable-submitclient  --with-domjudge-user=root && \
