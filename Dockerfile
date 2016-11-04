@@ -45,6 +45,6 @@ RUN apt-get install mariadb-client -fy
 
 RUN apt-get install vim -fy
 
-COPY bin /bin
+COPY entrypoint /bin
 
 ENTRYPOINT ["entrypoint"]

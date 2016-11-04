@@ -5,13 +5,15 @@ services:
     # Jury UI Service
     domserver: 
         image: daavar/domserver
-        env_file: conf/domserver.conf
+        env_file: 
+            - conf/mysql.conf
+            - conf/domserver.conf
         links:
            - mysql
         network_mode: bridge
         restart: always
 
-    # judgehosts service
+    # Judgehosts service
     judgehost: 
         image: daavar/judgehost
         env_file: conf/domserver.conf
