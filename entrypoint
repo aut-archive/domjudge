@@ -9,6 +9,6 @@ echo "dummy:$MYSQL_HOST:$MYSQL_DATABASE:$MYSQL_USER:$MYSQL_PASSWORD" >  /opt/dom
 
 echo "default $API_URL $API_USER $API_PASSWORD" > /opt/domjudge/etc/restapi.secret
 
-chmod 777 /opt/domjudge/etc -R
+chmod 777 -R /opt/domjudge/domserver/etc
 
 [ -x /entrypoint ] && /entrypoint
