@@ -1,4 +1,4 @@
-FROM daavar/domjudge
+FROM domjudge/base
 
 # PHP-FPM
 RUN mkdir -p /run/php

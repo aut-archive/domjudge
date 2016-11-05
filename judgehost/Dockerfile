@@ -1,4 +1,4 @@
-FROM daavar/domjudge
+FROM domjudge/base
 
 COPY conf/supervisord.conf /etc/supervisord.conf
 
